@@ -17,6 +17,10 @@ body {
   padding-top: 20px;
 }
 
+.container {
+  padding-top: 100px;
+}
+
 section {
   overflow: auto;
 }
@@ -63,24 +67,27 @@ p {
 
 /* header */
 
-.container{
-  margin-bottom: 50px;
+header {
+  height: 100px;
 }
+
+// .header-container {
+
+// }
 
 #logo {
   float: left;
-  margin-right: 10px;
+  margin-left: 50px;
   font-size: 1.7em;
   color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
   padding-top: 9px;
-  font-weight: bold;
   &:hover {
-    color: white;
-    text-decoration: none;
     opacity: 0.7;
   }
+}
+
+.nav {
+  padding: 20px 30px 30px 0;
 }
 
 /* footer */
