@@ -6,10 +6,10 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     get signup_path
     assert_no_difference 'User.count' do
       post users_path, params: { user: { full_name: "",
-                                         name:  "",
-                                         email: "user@invalid",
-                                         password: "foo",
-                                         password_confirmation: "bar" } }
+                                          name:  "",
+                                          email: "user@invalid",
+                                          password: "foo",
+                                          password_confirmation: "bar" } }
     end
     assert_template 'users/new'
   end
@@ -17,11 +17,11 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   test "valid signup information" do
     get signup_path
     assert_difference "User.count", 1 do
-      post users_path, params: { user: { full_name: "Example User",
-                                         name: "Example User",
-                                         email: "user@example.com",
-                                         password: "foobar",
-                                         password_confirmation: "foobar"} }
+    post users_path, params: { user: { full_name: "Example User",
+                                        name: "Example User",
+                                        email: "user@example.com",
+                                        password: "foobar",
+                                        password_confirmation: "foobar"} }
     end
     follow_redirect!
     assert_template 'users/show'
