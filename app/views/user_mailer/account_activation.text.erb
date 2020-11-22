@@ -1,0 +1,8 @@
+はじめまして、 <%= @user.name %> さん！
+こちらはInsta Clone Appです。
+
+新規ご登録ありがとうございます！
+登録はまだ完了しておりません。
+次のURLを押して登録を完了させてください。
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
