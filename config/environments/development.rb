@@ -37,10 +37,12 @@ Rails.application.configure do
   #letter_opener_web
   # config.action_mailer.default_url_options = { host: 'localhost:3000' }
   # config.action_mailer.delivery_method = :letter_opener_web
-
+  
   #メイラープレビュー
   host = 'localhost:3000'
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+  
+  config.action_mailer.default_url_options = { host: 'secret-mesa-59159.herokuapp.com' }
 
   config.action_mailer.perform_caching = false
 
