@@ -8,4 +8,14 @@
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.imageposts.any? %>
+      <h3>投稿数 (<%= @user.imageposts.count %>)</h3>
+      <ol class="imageposts">
+        <%= render @imageposts %>
+      </ol>
+      <%= will_paginate @imageposts %>
+    <% end %>
+  </div>
+
 </div>

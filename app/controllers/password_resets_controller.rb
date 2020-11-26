@@ -26,7 +26,7 @@ class PasswordResetsController < ApplicationController
       user.update_attribute(:activated_at, Time.zone.now)
       log_in user
       flash[:success] = "登録が完了しました！"
-      redirect_to user
+      redirect_to user 
     else
       flash[:danger] = "リンクが無効です。"
       redirect_to root_url
