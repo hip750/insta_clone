@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @imagepost = Imagepost.find(params[:id])
     @imageposts = @user.imageposts.paginate(page: params[:page])
   end
 

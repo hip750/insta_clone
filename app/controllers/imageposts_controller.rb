@@ -2,6 +2,12 @@ class ImagepostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
 
+  def show
+    @imagepost = Imagepost.find(params[:id])
+    @comment = Comment.new
+    @comments = @imagepost.comments
+  end
+
   def create
     @imagepost = current_user.imageposts.build(imagepost_params)
     @imagepost.image.attach(params[:imagepost][:image])
