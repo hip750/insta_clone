@@ -1,6 +1,7 @@
 class Imagepost < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_one_attached :image
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
@@ -13,5 +14,10 @@ class Imagepost < ApplicationRecord
   # 表示用のリサイズ済み画像を返す
   def display_image
     image.variant(resize_to_fit: [600, 600])
+  end
+
+  # いいね!していればtrueを返す
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
   end
 end

@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :imageposts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :like_imegeposts, through: :likes, source: :imagepost
   has_many :active_relationships,  class_name:  "Relationship",
                                     foreign_key: "follower_id",
                                     dependent:   :destroy

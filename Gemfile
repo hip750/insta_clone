@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'rails',          '6.0.3'
 gem 'rails-i18n'
 gem 'faker'
+gem 'font-awesome-rails'
 gem 'active_storage_validations', '0.8.2'
 gem 'image_processing',           '1.9.3'
 gem 'mini_magick',                '4.9.5'
