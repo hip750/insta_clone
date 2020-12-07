@@ -72,10 +72,6 @@ header {
   height: 100px;
 }
 
-// .header-container {
-
-// }
-
 #logo {
   float: left;
   margin-left: 50px;
@@ -89,6 +85,24 @@ header {
 
 .nav {
   padding: 20px 30px 30px 0;
+}
+
+.fa-home {
+  font-size: 35px;
+}
+
+.fa-sign-in {
+  font-size: 35px;
+}
+
+.circle {
+  position: relative;
+}
+
+.fa-circle {
+  position: absolute;
+  top: 10px;
+  right: 75px;
 }
 
 /* footer */
@@ -359,3 +373,6 @@ span.picture {
     color: #808080;
     margin-left: 20px;
   }
+
+  /* notification */
+

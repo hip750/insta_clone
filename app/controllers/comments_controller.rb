@@ -4,15 +4,17 @@ class CommentsController < ApplicationController
 
   def create
     @imagepost = Imagepost.find(params[:imagepost_id])
-    @comment = current_user.comments.build(comment_params)
-    @comment.imagepost_id = params[:imagepost_id]
+    @comment = @imagepost.comments.build(comment_params)
+    @comment.user_id = current_user.id
+    @comment_imagepost = @comment.imagepost
     @comments = @imagepost.comments
     if @comment.save
+      @comment_imagepost.create_notification_comment(current_user, @comment.id)
       flash[:success] = 'コメントしました'
-      redirect_to user_path(current_user)
+      redirect_to imagepost_path(@imagepost)
     else
       flash[:success] = 'コメントに失敗しました'
-      edirect_to user_path(current_user)
+      edirect_to imagepost_path(@imagepost)
     end
   end
 
