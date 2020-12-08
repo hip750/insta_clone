@@ -1,5 +1,5 @@
 class ImagepostsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :logged_in_user, only: [:search, :create, :destroy]
   before_action :correct_user,   only: :destroy
 
   def show
@@ -24,6 +24,10 @@ class ImagepostsController < ApplicationController
     @imagepost.destroy
     flash[:success] = "投稿を削除しました。"
     redirect_to request.referrer || root_url
+  end
+
+  def search
+    @imageposts = Imagepost.search(params[:search]) 
   end
 
   private

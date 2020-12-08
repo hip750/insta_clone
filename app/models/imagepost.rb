@@ -69,4 +69,9 @@ class Imagepost < ApplicationRecord
     notification.save if notification.valid?
   end
 
+  def self.search(search)
+    Imagepost.all if search.blank?
+    Imagepost.where(['content LIKE ?', "%#{search}%"])
+  end
+
 end

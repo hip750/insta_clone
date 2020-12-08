@@ -235,11 +235,6 @@ input {
   color: grayscale($color: #8b8a8a);
 }
 
-.edit-container p {
-  line-height: 0;
-  margin-bottom: 30px;
-  color: grayscale($color: #8b8a8a);
-}
 
 #error_explanation {
   color: red;
@@ -280,6 +275,24 @@ input {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+
+/* Users edit */
+
+.edit-container p {
+  line-height: 0;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  color: grayscale($color: #8b8a8a);
+}
+
+.male-btn {
+  display: inline-flex;
+}
+
+.female-btn {
+  display: inline-flex;
+  margin-left: 50px;
 }
 
 /* imageposts */
@@ -365,14 +378,22 @@ span.picture {
 
   /* delete */
 
-  .trash-btn {
-    display: inline-block;
-    width: 25px;
-    height: 30px;
-    font-size: 25px;
-    color: #808080;
-    margin-left: 20px;
+.trash-btn {
+  display: inline-block;
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
+  color: #808080;
+  margin-left: 20px;
   }
 
-  /* notification */
+  /* search */
 
+.search-form {
+  display: inline-flex;
+  height: 48px;
+}
+
+.search-btn {
+  display: inline-flex;
+}

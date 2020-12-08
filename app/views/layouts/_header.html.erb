@@ -11,11 +11,16 @@
         </li>
         <% if logged_in? %>
           <li>
-            <%= link_to users_path do%>
+            <%= link_to root_path do%>
               <i class="fa fa-upload fa-2x"></i>
             <% end %>
           </li>
             <%= render "notifications/circle" %>
+          <li>
+            <%= link_to search_imageposts_path do %>
+              <i class="fa fa-search fa-2x"></i>
+            <% end %>
+          </li>
           <li>
             <%= link_to users_path do%>
               <i class="fa fa-users fa-2x"></i>

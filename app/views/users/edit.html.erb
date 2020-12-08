@@ -11,20 +11,24 @@
           <%= f.text_field :full_name, class: "form-control" %>
 
           <%= f.label :name, "ユーザーネーム" %>
-          <%= f.text_field :name, class: 'form-control' %>
+          <%= f.text_field :name, class: "form-control" %>
 
-          <%= f.label :gender, "男性", {value: :male, style: "display: inline-block;"} %>
-          <%= f.radio_button :gender, :male %>
-          <%= f.label :gender, "女性", {value: :female, style: "display: inline-block;"} %>
-          <%= f.radio_button :gender, :female %>
-          <p>※非公開</p>
+        <div class="male-btn">
+          <%= f.radio_button :gender, :male, class: "male-btn" %>
+          <%= f.label :gender, "男性", value: :male, class: "male-label" %>
+        </div>
+        <div class="female-btn">
+          <%= f.radio_button :gender, :female, class: "female-btn" %>
+          <%= f.label :gender, "女性", value: :female, class: "female-label" %>
+        </div>
+        <p>※非公開</p>
 
           <%= f.label :email, "メールアドレス" %>
-          <%= f.email_field :email, class: 'form-control' %>
+          <%= f.email_field :email, class: "form-control" %>
           <p>※非公開</p>
 
           <%= f.label :phone_number, "電話番号（ハイフンなし）" %>
-          <%= f.text_field :phone_number, class: 'form-control' %>
+          <%= f.text_field :phone_number, class: "form-control" %>
           <p>※非公開</p>
 
           <%= f.label :web_site, "ウェブサイト" %>
@@ -34,7 +38,7 @@
           <%= f.text_area :introduction, class: "form-control", value: "Nice to meet you : )" %>
 
           <%= f.label :password, "パスワード" %>
-          <%= f.password_field :password, class: 'form-control' %>
+          <%= f.password_field :password, class: "form-control" %>
 
           <%= f.label :password_confirmation, "パスワード確認" %>
           <%= f.password_field :password_confirmation, class: 'form-control' %>
