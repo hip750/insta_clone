@@ -10,15 +10,37 @@
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
+    <section class="introduction">
+      <div class="introduction-title">
+        <i class="fa fa-user"></i> 自己紹介
+      </div>
+      <p><%= @user.introduction %></p>
+    </section>
+    <section class="web-site">
+      <div class="web-site-title">
+        <i class="fa fa-globe"></i> ウェブサイト
+      </div>
+      <p><%= link_to @user.web_site, @user.web_site %></p>
+    </section>
     <section>
       <%= render 'follow_form' if logged_in? %>
     </section>
   </aside>
+
   <div class="col-md-8">
     <% if @user.imageposts.any? %>
       <h3>投稿数 (<%= @user.imageposts.count %>)</h3>
+      <hr>
       <ol class="imageposts">
-        <%= render @imageposts %>
+        <% @imageposts.each do |imagepost| %>
+          <%= link_to imagepost_path(imagepost.id) do %>
+            <div class="col-sm-4" data-toggle="modal" data-target="#exampleModalCenter">
+              <div class="col-sm-4">
+                <%= image_tag imagepost.display_thum if imagepost.image.attached? %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </ol>
       <%= will_paginate @imageposts %>
     <% end %>

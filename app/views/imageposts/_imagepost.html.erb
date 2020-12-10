@@ -4,25 +4,26 @@
     <%= link_to imagepost.user.name, imagepost.user %>
   </span>
   <span class="content">
+    <%= image_tag imagepost.display_image if imagepost.image.attached? %>
     <%= imagepost.content %>
   </span>
   <span class="timestamp">
     <%= time_ago_in_words(imagepost.created_at) %>前.
   </span>
 
-  <%= link_to imagepost_comments_path(imagepost.id) do %>
+  <div id="likes-btn-<%= imagepost.id %>" class="likes-btn">
+    <%= render partial: 'likes/like', locals: { imagepost: imagepost } %>
+  </div>
+
+  <%= link_to imagepost_path(imagepost.id) do %>
     <span>
       <i class="fa fa-comment comment-btn" aria-hidden="true"></i>
       <%= imagepost.comments.count %>
     </span>
   <% end %>
 
-  <div id="likes-btn-<%= imagepost.id %>" class="likes-btn">
-    <%= render partial: 'likes/like', locals: { imagepost: imagepost} %>
-  </div>
-
   <% if current_user?(imagepost.user) %>
-    <%= link_to imagepost, method: :delete, data: { confirm: "本当に削除しますか？" } do %>
+    <%= link_to imagepost, method: :delete, data: { confirm: "本当に投稿を削除しますか？" } do %>
       <span>
         <i class="fa fa-trash trash-btn" aria-hidden="true"></i>
       </span>

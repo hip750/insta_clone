@@ -4,8 +4,8 @@ class ImagepostsController < ApplicationController
 
   def show
     @imagepost = Imagepost.find(params[:id])
-    @comment = Comment.new
     @comments = @imagepost.comments
+    @comment = Comment.new
   end
 
   def create

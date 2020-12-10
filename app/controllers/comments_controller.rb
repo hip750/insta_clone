@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
     @comment = @imagepost.comments.build(comment_params)
     @comment.user_id = current_user.id
     @comment_imagepost = @comment.imagepost
-    @comments = @imagepost.comments
     if @comment.save
       @comment_imagepost.create_notification_comment(current_user, @comment.id)
       flash[:success] = 'コメントしました'

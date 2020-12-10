@@ -12,6 +12,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @imagepost = Imagepost.find(params[:id])
     @imageposts = @user.imageposts.paginate(page: params[:page])
+    @comments = @imagepost.comments
+    @comment = Comment.new
   end
 
   def new
@@ -34,10 +36,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "プロフィールを更新しました"
       redirect_to @user
     else
+      flash.now[:danger] = "プロフィールの編集に失敗しました"
       render 'edit'
     end
   end

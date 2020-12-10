@@ -1,5 +1,3 @@
-<% provide(:title, "Comments") %>
-
 <div class="imagepost-container">
   <div class="text-center">
     <%= image_tag @imagepost.display_image if @imagepost.image.attached? %>
@@ -33,6 +31,7 @@
         </div>
       <% end %>
     </div>
+    
     <% if logged_in? %>
       <% if @comment.errors.any? %>
         <% @comment.errors.full_messages.each do |message| %>

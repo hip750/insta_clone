@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :relationships,       only: [:create, :destroy]
   resources :imageposts,          only: [:show, :create, :destroy] do
-    resources :comments, only: [:index, :create, :destroy]
+    resources :comments, only: [:create, :destroy]
     resource  :likes,    only: [:create, :destroy]
     collection do
       get 'search'

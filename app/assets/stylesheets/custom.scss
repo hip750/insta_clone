@@ -216,6 +216,22 @@ aside {
   padding: 0;
 }
 
+.introduction {
+  margin: 0;
+  p {
+    color: gray;
+    margin: 0;
+  }
+}
+.web-site {
+  margin: 0;
+  padding-top: 0;
+  p {
+    color: gray;
+    margin: 0;
+  }
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -286,6 +302,16 @@ input {
   color: grayscale($color: #8b8a8a);
 }
 
+.gravatar-edit {
+  margin-bottom: 30px;
+  margin-top: 40px;
+  a {
+    clear: both;
+    display: block;
+    padding-top: 10px;
+  }
+}
+
 .male-btn {
   display: inline-flex;
 }
@@ -349,6 +375,7 @@ span.picture {
   height: 30px;
   font-size: 25px;
   color: #808080;
+  margin-left: 20px;
 }
 
 /* likes */
@@ -363,7 +390,7 @@ span.picture {
   height: 30px;
   font-size: 25px;
   color: #e54747;
-  margin-left: 20px;
+  margin-left: 60px;
   text-decoration: none;
   }
 
@@ -372,7 +399,7 @@ span.picture {
   height: 30px;
   font-size: 25px;
   color: #808080; 
-  margin-left: 20px;
+  margin-left: 60px;
   text-decoration: none;
   }
 
