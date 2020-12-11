@@ -1,9 +1,9 @@
 <div class="imagepost-container">
   <div class="text-center">
-    <%= image_tag @imagepost.display_image if @imagepost.image.attached? %>
+    <%= image_tag imagepost.display_image if imagepost.image.attached? %>
   </div>
   <div class="text-left">
-    <%= @imagepost.content %>
+    <%= imagepost.content %>
   </div>
 </div>
 <br>
@@ -21,7 +21,7 @@
         <div class="comment-index">
           <% if comment.user == current_user %>
               <%= time_ago_in_words(comment.created_at) %>前.
-            | <%= link_to '削除', [@imagepost, comment], method: :delete, remote: true %>
+            | <%= link_to '削除', [imagepost, comment], method: :delete, remote: true %>
               <hr>
           <% else %>
             <div class="comment-delete">
@@ -33,18 +33,18 @@
     </div>
     
     <% if logged_in? %>
-      <% if @comment.errors.any? %>
-        <% @comment.errors.full_messages.each do |message| %>
+      <% if comment.errors.any? %>
+        <% comment.errors.full_messages.each do |message| %>
           <div><%= message %></div>
         <% end %>
       <% end %>
     <% end %>
     
-    <%= form_with model: [@imagepost, @comment], local: true, remote: true do |f| %>
+    <%= form_with model: [imagepost, comment], local: true, remote: true do |f| %>
       <div class="field">
         <%= f.text_area :content, class: 'input', placeholder: "コメント" %>
       </div>
-      <%= f.submit "コメントする", class: 'button is-primary' %>
+      <%= f.submit "コメントする", class: 'btn btn-primary' %>
     <% end %>
     
   </div>

@@ -1,52 +1,5 @@
 <% provide(:title, "Comments") %>
 
-<div class="imagepost-container">
-  <div class="text-center">
-    <%= image_tag @imagepost.display_image if @imagepost.image.attached? %>
-  </div>
-  <div class="text-left">
-    <%= @imagepost.content %>
-  </div>
-</div>
-<br>
-<hr>
-<div class="card mb-4">
-  <div class="card-content">
-    <div id="comments_area">
-      <% @comments.each do |comment| %>
-        <div class="comment-name">
-          <%= link_to comment.user.name, [comment.user] %>
-        </div>
-        <div class="comment-content">
-          <%= comment.content %>
-        </div>
-        <div class="comment-index">
-          <% if comment.user == current_user %>
-              <%= time_ago_in_words(comment.created_at) %>前.
-            | <%= link_to '削除', [@imagepost, comment], method: :delete, remote: true %>
-              <hr>
-          <% else %>
-            <div class="comment-delete">
-              <%= time_ago_in_words(comment.created_at) %>前.
-              <hr>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-    <% if logged_in? %>
-      <% if @comment.errors.any? %>
-        <% @comment.errors.full_messages.each do |message| %>
-          <div><%= message %></div>
-        <% end %>
-      <% end %>
-    <% end %>
-    
-    <%= form_with model: [@imagepost, @comment], local: true, remote: true do |f| %>
-      <div class="field">
-        <%= f.text_area :content, class: 'input', placeholder: "コメント" %>
-      </div>
-      <%= f.submit "コメントする", class: 'button is-primary' %>
-    <% end %>
-    
-  </div>
-</div>
+<h1>コメント</h1>
+<% @comments = @imagepost.comments %>
+<%= render 'users/comment', {imagepost: @imagepost, comment: @comment} %>

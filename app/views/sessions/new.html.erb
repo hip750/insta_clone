@@ -6,10 +6,11 @@
     <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
 
       <%= f.label :email, "メールアドレス" %>
-      <%= link_to "（パスワードをお忘れの方）", new_password_reset_path %>
+      <span>（新規登録は<%= link_to "こちら", signup_path %>）</span>
       <%= f.email_field :email, class: 'form-control' %>
 
       <%= f.label :password, "パスワード" %>
+      <%= link_to "（パスワードをお忘れの方）", new_password_reset_path %>
       <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.label :remember_me, class: "checkbox inline" do %>
@@ -20,6 +21,5 @@
       <%= f.submit "Log in", class: "btn btn-primary" %>
     <% end %>
 
-    <p><%= link_to "新規登録", signup_path %> ← 登録がお済みでない方はこちら</p>
   </div>
 </div>

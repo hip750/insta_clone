@@ -37,14 +37,20 @@
           <p>※非公開</p>
 
           <%= f.label :web_site, "ウェブサイト" %>
-          <%= f.text_field :web_site, class: "form-control", placeholder: "https://www.insta_clone.com" %>
+          <%= f.text_field :web_site, class: "form-control", value: @user.web_site,
+                                      placeholder: "https://www.insta_clone.com" %>
 
           <%= f.label :introduction, "自己紹介" %>
-          <%= f.text_area :introduction, class: "form-control", value: "Nice to meet you : )" %>
+          <%= f.text_area :introduction, class: "form-control", value: @user.introduction %>
           <br>
 
           <%= f.submit "プロフィールを更新", class: "btn btn-primary" %>
         <% end %>
       </div>
   </div>
+</div>
+<br>
+<div class="withdrawal text-right">
+  <%= link_to "退会する", destroy_all_user_path(@user), method: :delete,
+                          data: { confirm: "本当に退会しますか？" } %>
 </div>
