@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= render 'layouts/analytics' %>
+    <%= display_meta_tags(default_meta_tags) %>
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/shim' %>

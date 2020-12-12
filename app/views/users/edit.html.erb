@@ -1,6 +1,7 @@
+<% set_meta_tags title: 'ユーザー編集', description: 'Inssta Clone Appのアカウント情報の編集画面です。' %>
 <% provide(:title, "Edit user") %>
-<h1>プロフィールの編集</h1>
 
+<h1>プロフィールの編集</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(model: @user, local: true) do |f| %>

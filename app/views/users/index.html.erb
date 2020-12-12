@@ -1,8 +1,8 @@
+<% set_meta_tags title: 'すべてのユーザー', description: 'Inssta Clone App内のすべてのユーザーの一覧です。' %>
 <% provide(:title, 'All users') %>
+
 <h1>すべてのユーザー</h1>
-
 <%= will_paginate %>
-
 <ul class="users">
   <% @users.each do |user| %>
     <li>

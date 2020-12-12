@@ -1,4 +1,6 @@
+<% set_meta_tags title: '通知', description: 'Inssta Clone App内のいいね！やコメントの通知を受け取れます。' %>
 <% provide(:title, "Notifications") %>
+
 <h1>通知</h1>
   <%= link_to destroy_all_notifications_path(current_user), method: :delete,
               data: { confirm: "本当に削除しますか？" } do %>
