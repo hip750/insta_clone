@@ -24,6 +24,11 @@
         <%= f.label :password_confirmation, "パスワード確認" %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+        <div class="terms_of_service text-center">
+          <%= link_to "利用規約", terms_of_service_path %> / 
+          <%= link_to "プライバシーポリシー", privacy_policy_path %>
+        </div><br>
+        
         <%= f.submit "アカウント作成", class: "btn btn-primary" %>
       <% end %>
     </div>
