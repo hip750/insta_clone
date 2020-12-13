@@ -23,11 +23,12 @@
     <h1>
       Welcome to the <br> Insta Clone App
     </h1>
-
     <h2>
-      This home page is the photos upload application.
+      Insta Clone App は無料で使える写真共有アプリです 
     </h2>
-
-    <%= link_to "新規登録", signup_path, class: "btn btn-lg btn-primary" %>
+    <%= image_tag 'insta_top.jpg', alt: 'Insta top image', class: "top-image" %>
+    <p>
+      <%= link_to "新規登録", signup_path, class: "btn btn-lg btn-primary" %>
+    </p>
   </div>
 <% end %>

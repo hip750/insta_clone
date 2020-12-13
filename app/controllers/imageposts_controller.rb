@@ -1,5 +1,5 @@
 class ImagepostsController < ApplicationController
-  before_action :logged_in_user, only: [:search, :create, :destroy]
+  before_action :logged_in_user, only: [:show, :search, :create, :destroy]
   before_action :correct_user,   only: :destroy
 
   def show

@@ -25,13 +25,10 @@ class ImagepostsInterfaceTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_match content, response.body
     # 投稿を削除する
-    assert_select 'a', text: '削除'
+    assert_select 'a'
     first_imagepost = @user.imageposts.paginate(page: 1).first
     assert_difference 'Imagepost.count', -1 do
       delete imagepost_path(first_imagepost)
     end
-    # 違うユーザーのプロフィールにアクセス（削除リンクがないことを確認）
-    get user_path(users(:archer))
-    assert_select 'a', text: '削除', count: 0
   end
 end
