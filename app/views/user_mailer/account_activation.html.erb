@@ -1,0 +1,12 @@
+<h1>Insta Clone App</h1>
+
+<p>はじめまして、 <%= @user.name %> さん！こちらはInsta Clone Appです。</p>
+
+<p>
+新規ご登録ありがとうございます！
+登録はまだ完了しておりません。
+「アカウントの有効化」を押して登録を完了させてください。
+</p>
+
+<%= link_to "アカウントの有効化", edit_account_activation_url(@user.activation_token,
+                                                              email: @user.email) %>

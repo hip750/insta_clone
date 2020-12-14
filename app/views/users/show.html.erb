@@ -1,0 +1,70 @@
+<% set_meta_tags title: 'プロフィール', description: 'Inssta Clone Appアカウントのプロフィール画面です。' %>
+<% provide(:title, @user.name) %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+    <section class="introduction">
+      <div class="introduction-title">
+        <i class="fa fa-user"></i> 自己紹介
+      </div>
+      <p><%= @user.introduction %></p>
+    </section>
+    <section class="web-site">
+      <div class="web-site-title">
+        <i class="fa fa-globe"></i> ウェブサイト
+      </div>
+      <% unless @user.web_site.nil? %>
+        <p><%= link_to @user.web_site, @user.web_site %></p>
+      <% end %>
+    </section>
+    <section>
+      <%= render 'follow_form' if logged_in? %>
+    </section>
+  </aside>
+
+  <div class="col-md-8">
+    <% if @user.imageposts.any? %>
+      <h3>投稿数 (<%= @user.imageposts.count %>)</h3>
+      <hr>
+      <% @imageposts.each do |imagepost| %>
+        <ol id="imagepost-<%= imagepost.id %>"> 
+          <div class="col-sm-4" data-toggle="modal" data-target="#exampleModalCenter-<%= imagepost.id %>">
+            <div class="col-sm-4">
+              <%= image_tag imagepost.display_thum if imagepost.image.attached? %>
+            </div>
+          </div>
+
+          <div class="modal fade" id="exampleModalCenter-<%= imagepost.id %>" tabindex="-1" role="dialog"   aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title" id="exampleModalCenterTitle">コメント</h1>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <% @comments = imagepost.comments %>
+                  <%= render 'comment', {imagepost: imagepost, comment: @comment} %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">閉じる</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ol>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<%= will_paginate @imageposts %>

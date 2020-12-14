@@ -1,0 +1,57 @@
+<% set_meta_tags title: 'ユーザー編集', description: 'Inssta Clone Appのアカウント情報の編集画面です。' %>
+<% provide(:title, "Edit user") %>
+
+<h1>プロフィールの編集</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @user, local: true) do |f| %>
+      <div class="edit-container">
+        <%= render 'shared/error_messages', object: f.object %>
+
+          <%= gravatar_for @user %>
+        <div class="gravatar-edit">
+          <a rel="noopener" href="https://gravatar.com/emails" target="_blank">プロフィール画像を変更</a>
+        </div>
+
+          <%= f.label :full_name, "フルネーム" %>
+          <%= f.text_field :full_name, class: "form-control" %>
+
+          <%= f.label :name, "ユーザーネーム" %>
+          <%= f.text_field :name, class: "form-control" %>
+
+        <div class="male-btn">
+          <%= f.radio_button :gender, :male, class: "male-btn" %>
+          <%= f.label :gender, "男性", value: :male, class: "male-label" %>
+        </div>
+        <div class="female-btn">
+          <%= f.radio_button :gender, :female, class: "female-btn" %>
+          <%= f.label :gender, "女性", value: :female, class: "female-label" %>
+        </div>
+        <p>※非公開</p>
+
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.email_field :email, class: "form-control" %>
+          <p>※非公開</p>
+
+          <%= f.label :phone_number, "電話番号（ハイフンなし）" %>
+          <%= f.text_field :phone_number, class: "form-control" %>
+          <p>※非公開</p>
+
+          <%= f.label :web_site, "ウェブサイト" %>
+          <%= f.text_field :web_site, class: "form-control", value: @user.web_site,
+                                      placeholder: "https://www.insta_clone.com" %>
+
+          <%= f.label :introduction, "自己紹介" %>
+          <%= f.text_area :introduction, class: "form-control", value: @user.introduction %>
+          <br>
+
+          <%= f.submit "プロフィールを更新", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+  </div>
+</div>
+<br>
+<div class="withdrawal text-right">
+  <%= link_to "退会する", destroy_all_user_path(@user), method: :delete,
+                          data: { confirm: "本当に退会しますか？" } %>
+</div>

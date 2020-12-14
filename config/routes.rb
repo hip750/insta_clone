@@ -1,3 +1,30 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root   'static_pages#home'
+  get    '/terms_of_service' => 'static_pages#terms_of_service'
+  get    '/privacy_policy' => 'static_pages#privacy_policy'
+  get    '/signup'  => 'users#new'
+  get    '/login'   => 'sessions#new'
+  post   '/login'   => 'sessions#create'
+  delete '/logout'  => 'sessions#destroy'
+  resources :users do
+    member do
+      get :following, :followers
+      delete 'destroy_all'
+    end
+  end
+  resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :relationships,       only: [:create, :destroy]
+  resources :imageposts,          only: [:show, :create, :destroy] do
+    resources :comments, only: [:create, :destroy]
+    resource  :likes,    only: [:create, :destroy]
+    collection do
+      get 'search'
+    end
+  end
+  resources :notifications,       only: [:index, :destroy] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
 end

@@ -1,0 +1,34 @@
+<% set_meta_tags title: 'ホーム' %>
+
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+      <section class="imagepost_form">
+        <%= render 'shared/imagepost_form' %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3>投稿一覧</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <h1>
+      Welcome to the <br> Insta Clone App
+    </h1>
+    <h2>
+      Insta Clone App は無料で使える写真共有アプリです 
+    </h2>
+    <%= image_tag 'insta_top.jpg', alt: 'Insta top image', class: "top-image" %>
+    <p>
+      <%= link_to "新規登録", signup_path, class: "btn btn-lg btn-primary" %>
+    </p>
+  </div>
+<% end %>

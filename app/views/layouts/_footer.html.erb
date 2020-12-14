@@ -1,0 +1,18 @@
+<footer class="footer">
+  <div class="">
+    The <a href="#">Insta Clone App</a>
+    by <a href="#">hajime.</a>
+  </div>
+  <nav>
+    <ul>
+      <li><%= link_to "ホーム", root_path %></li>
+      <li><%= link_to "利用規約", terms_of_service_path %></li>
+      <li><%= link_to "プライバシーポリシー", privacy_policy_path %></li>
+      <% if logged_in? %>
+        <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "ログイン", login_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+</footer>
