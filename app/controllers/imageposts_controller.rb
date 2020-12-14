@@ -37,7 +37,7 @@ class ImagepostsController < ApplicationController
     end
 
     def correct_user
-      @imagepost = current_user.imageposts.find_by(id: params[:id])
-      redirect_to root_url if @imagepost.nil?
+      @imagepost = Imagepost.find_by(id: params[:id])
+      redirect_to root_url if @imagepost&.user != current_user
     end
 end

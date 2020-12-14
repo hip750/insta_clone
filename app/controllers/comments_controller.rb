@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
       redirect_to imagepost_path(@imagepost)
     else
       flash[:success] = 'コメントに失敗しました'
-      edirect_to imagepost_path(@imagepost)
+      redirect_to imagepost_path(@imagepost)
     end
   end
 
